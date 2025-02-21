@@ -4,10 +4,11 @@ import { userSchema } from "../Schema/fireSchema.js";
 export const registerUser = async (req, res) => {
     try {
       const userData = req.body;
-  
+      console.log("Received User Data:", req.body);
       // Validate input data
       const validatedData = userSchema.parse(userData);
-  
+      console.log("Validated Data:", validatedData);
+
       // Add the user document to Firestore
       const userRef = db.collection('Users').doc(); 
       await userRef.set(validatedData);
