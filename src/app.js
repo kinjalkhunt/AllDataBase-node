@@ -2,14 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import "reflect-metadata";
 import mongoConnection from "./DBconnection/mongoConnection.js";
+import { deleteUser, getUserById, getUsers, registerUser, updateUser } from "./Controller/fireController.js";
+import { createUser, deletedUser, getAllUsers, getUserId, updatedUser } from "./Controller/userController.js";
+import { createdUser, deletesUser, getUserbyId, getUsersAll, updatedUsers } from "./Controller/seqController.js";
+import { createUser1, deletUser, getallUsers, getUserByid, updateUsers } from "./Controller/typeormController.js";
 
-
-// import connectDB from "./DBConnection/connection.js";
-// import { createUser, deleteUser, getUserById, getUsers, updateUser } from "./Controller/typeormController.js";
-// import { createUser, deleteUser, getUserById, getUsers, updateUser } from "./Controller/seqController.js";
-
-// import { deleteUser, getUserById, getUsers, registerUser, updateUser } from "./Controller/userController.js";
-// import { deleteUser, getUserById, getUsers, registerUser, updateUser } from "./Controller/fireController.js";
 
 dotenv.config();  
 const app = express();
@@ -17,33 +14,33 @@ app.use(express.json());
 
 // mongoose route
 
-// app.post("/create", registerUser)
-// app.get("/getAll", getUsers)
-// app.get("/get/:id", getUserById)
-// app.put("/update/:id", updateUser)
-// app.delete("/delete/:id", deleteUser)
+app.post("/create", createUser)
+app.get("/getAll", getAllUsers)
+app.get("/get/:id", getUserId)
+app.put("/update/:id", updatedUser)
+app.delete("/delete/:id", deletedUser)
 
 
-// Firebase Route
-// app.post("/create", registerUser)
-// app.get("/getAll", getUsers)
-// app.get("/get/:id", getUserById)
-// app.put("/update/:id", updateUser)
-// app.delete("/delete/:id", deleteUser)
+// // Firebase Route
+app.post("/create", registerUser)
+app.get("/getAll", getUsers)
+app.get("/get/:id", getUserById)
+app.put("/update/:id", updateUser)
+app.delete("/delete/:id", deleteUser)
 
 // sequlize Route
-// app.post("/users", createUser);
-// app.get("/usersAll", getUsers); 
-// app.get("/users/:id", getUserById); 
-// app.put("/users/:id", updateUser); 
-// app.delete("/users/:id", deleteUser); 
+app.post("/users", createdUser);
+app.get("/usersAll", getUsersAll); 
+app.get("/users/:id", getUserbyId); 
+app.put("/users/:id", updatedUsers); 
+app.delete("/users/:id", deletesUser); 
 
 // typeorm Route
-// app.post("/users", createUser); // Create user
-// app.get("/usersAll", getUsers); // Get all users
-// app.get("/users/:id", getUserById); // Get user by ID
-// app.put("/users/:id", updateUser); // Update user by ID
-// app.delete("/users/:id", deleteUser); // Delete user by ID
+app.post("/users", createUser1); // Create user
+app.get("/usersAll", getallUsers); // Get all users
+app.get("/users/:id", getUserByid); // Get user by ID
+app.put("/users/:id", updateUsers); // Update user by ID
+app.delete("/users/:id", deletUser); // Delete user by ID
 
 
 const port = process.env.PORT || 9000;
