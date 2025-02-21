@@ -1,0 +1,5 @@
+import "./src/app.js"
+// import "./src/DBConnection/connection.js"
+// import "./src/DBConnection/firbaseConnect.js"
+// import "./src/DBConnection/seqConnection.js"
+// import "./src/DBConnection/typeormConnect.js"
