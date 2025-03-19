@@ -1,6 +1,6 @@
 // controllers/userController.js
-import bcrypt from 'bcryptjs';
 import User from '../Schema/mongoUser.js';
+import bcrypt from 'bcrypt'
 
 
 // Register a new user
@@ -17,14 +17,14 @@ export const CreateUser = async (req, res) => {
         }
 
         // Hash the password
-        // const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user
         const newUser = new User({
             name,
             email,
-            password
-            // password: hashedPassword,
+            password,
+            password: hashedPassword,
         });
 
         await newUser.save();

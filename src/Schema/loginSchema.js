@@ -3,10 +3,6 @@
 import { mongoose } from "mongoose";
 
 const LoginSchema = mongoose.Schema({
-    userName: {
-        type: String,
-        required: true,
-    },
     password: {
         type: String,
         required: true,
@@ -14,7 +10,11 @@ const LoginSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
+    },
+    googleId: {
+        type: String,
+        sparse: true
     }
-})
+}, { timestamps: true });
 const LoginModel = mongoose.model("Login",LoginSchema)
 export default LoginModel;

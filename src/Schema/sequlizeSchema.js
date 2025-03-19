@@ -1,6 +1,6 @@
 // models/info.js
 import { DataTypes } from "sequelize";
-import sequelize from "../DBconnection/seqConnection.js";
+import sequelize from "../../allDatabase/src/DBconnection/seqConnection.js";
 
 const Info = sequelize.define("Info", {
   name: {
