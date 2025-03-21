@@ -14,6 +14,13 @@ const LoginSchema = mongoose.Schema({
     googleId: {
         type: String,
         sparse: true
+    },
+    displayName: {
+        type: String,
+
+    },
+    image: {
+        type: String,
     }
 }, { timestamps: true });
 const LoginModel = mongoose.model("Login",LoginSchema)

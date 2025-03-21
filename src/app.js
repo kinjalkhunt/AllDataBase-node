@@ -11,21 +11,31 @@ import session from "express-session";
 dotenv.config();  
 const app = express();
 
+// CORS configuration
+app.use(cors({
+    origin: ["http://localhost:3000", process.env.FRONTEND_URL],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(express.json());
-app.use(cors())
 
-// / ✅ Add session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "your_secret_key",
+// Session configuration
+app.use(session({
+    secret: process.env.JWT_KEY,
     resave: false,
-    saveUninitialized: true,
-  })
-);
-// Initialize Passport
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true
+    }
+}));
+
+// Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use("/v1",router)
 
 const port = process.env.PORT || 8000;
